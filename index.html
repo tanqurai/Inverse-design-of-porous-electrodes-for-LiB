@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NMC532 Microstructure Generation</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/raspberry.svg">
+    
+    <!-- PapaParse for CSV parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    
+    <!-- Plotly for 3D graphs -->
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    
+    <!-- Google Model Viewer for 3D rendering -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>NMC532 Microstructure Generation</h1>
+        <p>Inverse design using physically-constrained conditional GAN.</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Plot Card -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Training Dataset Parameters</h2>
+                <p class="card-description">Interactive 3D plot of porosity, active material volume fraction, and tortuosity factor for our training dataset volumes. (Use the left mouse button to rotate, the right mouse button to pan, and the mouse wheel to zoom by scrolling or pressing.)</p>
+            </div>
+            <div class="card-content">
+                <div id="plot-container"></div>
+            </div>
+        </div>
+
+        <!-- 3D Render Card -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Generated Microstructure</h2>
+                <p class="card-description">3D render of the generated NMC532 microstructure. You can rotate and zoom to inspect the volume.</p>
+            </div>
+            <div class="card-content">
+                <model-viewer 
+                    src="assets/recon_testing_volume_0008.gltf" 
+                    alt="A 3D model of generated NMC532 microstructure" 
+                    auto-rotate 
+                    camera-controls
+                    shadow-intensity="1">
+                </model-viewer>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="assets/logo.svg" alt="Lab Logo" class="footer-logo">
+                <p>Check out <a href="https://tanqurailab.kz">our website</a> for more of our work.</p>
+            </div>
+            <div class="footer-right">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                    </svg>
+                    <a href="mailto:ayermukhambetova@nu.edu.kz">ayermukhambetova@nu.edu.kz</a>
+                </p>
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                    </svg>
+                    Astana, Kazakhstan
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
